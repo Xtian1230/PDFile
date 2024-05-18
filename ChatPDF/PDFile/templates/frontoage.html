@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDFile - Your PDF Chatbot</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+        }
+
+        .front-page-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            opacity: 0; /* Initially hidden */
+            animation: fadeIn 1s ease forwards; /* Fade in animation */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .pdfile-logo {
+            width: 200px;
+            height: auto;
+            margin-bottom: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); /* Shadow added */
+        }
+
+        .pdfile-description {
+            text-align: center;
+            margin-top: 20px;
+            max-width: 600px;
+            color: #555;
+            font-size: 18px;
+        }
+
+        .login-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-top: 40px;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .login-button:hover {
+            background-color: #DD1533;
+        }
+
+        footer {
+            background-color: #388E3C; /* Darker green color */
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="front-page-container">
+        <img src="logo.png" alt="Logo" class="pdfile-logo"> <!-- Shadow added to this element -->
+        <div class="pdfile-description">
+            <h1>Welcome to PDFile</h1>
+            <p>PDFile is your personal chatbot assistant designed to help you answer questions related to your PDF content. With PDFile, you can easily extract information from your PDF documents by simply asking questions. PDFile is here to assist you efficiently and effectively.</p>
+        </div>
+        <a href="login.html" class="login-button">Get Started</a>
+    </div>
+    <footer>
+        Remember kids if you have questions, ask a PDFile.
+    </footer>
+</body>
+</html>

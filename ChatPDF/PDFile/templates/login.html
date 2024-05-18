@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDFile - Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Rubik', sans-serif;
+            background: #f6f9fc;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .form-box {
+            width: 90%; /* Adjusted width */
+            max-width: 400px; /* Added max-width */
+            height: auto;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+            border-radius: 3px;
+            background: #fff;
+            opacity: 0; /* Initially hidden */
+            animation: fadeIn 1s ease forwards; /* Fade in animation */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .top {
+            width: 100%;
+            height: 20vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .top-title {
+            color: #899bb4;
+            font-size: 14px;
+        }
+
+        .logo {
+            width: 70px;
+            height: auto;
+            margin-top: 10px;
+        }
+
+        .bottom {
+            width: 100%;
+            height: auto;
+            background: #f6f9fc;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2em 0;
+        }
+
+        .username,
+        .password,
+        .login-btn,
+        .signup-btn,
+        .forgot-password {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 1em;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        button[type="submit"] {
+            width: 100%; /* Adjusted width */
+            max-width: 250px; /* Added max-width */
+            height: 35px;
+            background: #fff;
+            border: none;
+            outline: none;
+            padding: 0 0.5em;
+            color: #899bb4;
+            box-shadow: 0 2px 4px rgb(50 50 93 / 10%);
+        }
+
+        button[type="submit"] {
+            width: auto; /* Adjusted width */
+            max-width: 100px; /* Added max-width */
+            height: 30px;
+            background: #39A650;
+            color: #fff;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgb(50 50 93 / 10%);
+            transition: 0.2s ease;
+        }
+
+        button[type="submit"]:hover {
+            background: #DD1533;
+        }
+
+        footer {
+            width: 100%;
+            height: 10vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        /* Center the title */
+        .top-title h1 {
+            text-align: center;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 576px) {
+            .form-box {
+                width: 90%;
+            }
+            input[type="text"],
+            input[type="password"],
+            button[type="submit"] {
+                max-width: 200px;
+            }
+            button[type="submit"] {
+                max-width: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="container">
+        <div class="form-box">
+            <div class="top">
+                <div class="top-title">
+                    <h1 style="color: #39A650;"><b>Login</b></h1>
+                    <!-- Logo Placeholder -->
+                    <img src="logo.png" alt="Logo" class="logo">
+                </div>
+            </div>
+            <div class="bottom">
+                <form id="login-form">
+                    <div class="username">
+                        <div class="username-icon">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                        </div>
+                        <input type="text" id="username" placeholder="Username">
+                    </div>
+                    <div class="password">
+                        <div class="password-icon">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                        </div>
+                        <input type="password" id="password" placeholder="Password">
+                    </div>
+                    <div class="login-btn">
+                        <button type="submit">Login</button>
+                    </div>
+                </form>
+                <div class="signup-btn">
+                    <a href="signup.html">Sign Up</a>
+                </div>
+                <div class="forgot-password">
+                    <a href="forgotpass.html">Forgot Password?</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        
+    </footer>
+
+    <!-- Bootstrap Alert -->
+    <div class="alert alert-danger alert-dismissible fade show" id="error-alert" style="display: none;" role="alert">
+        Please fill in all the fields.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // Function to validate form fields
+        function validateForm() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+
+            if (username === "" || password === "") {
+                document.getElementById("error-alert").style.display = "block";
+                return false; // Prevent form submission
+            }
+            return true; // Allow form submission
+        }
+
+        // Add event listener for form submission
+        document.getElementById("login-form").addEventListener("submit", function(event) {
+            if (!validateForm()) {
+                event.preventDefault(); // Prevent form submission if fields are empty
+            }
+        });
+    </script>
+</body>
+</html>
