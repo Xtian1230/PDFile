@@ -7,187 +7,213 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
         body {
             font-family: 'Rubik', sans-serif;
-            background: #f6f9fc;
+            background: linear-gradient(135deg, #01412b, #0e6d4d, #5ab8ab);
             margin: 0;
             padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
 
         .container {
             width: 100%;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .form-box {
-            width: 90%; /* Adjusted width */
-            max-width: 400px; /* Added max-width */
-            height: auto;
-            box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
-            border-radius: 3px;
-            background: #fff;
-            opacity: 0; /* Initially hidden */
-            animation: fadeIn 1s ease forwards; /* Fade in animation */
+            max-width: 400px;
+            box-shadow: 0 10px 30px rgba(24, 23, 23, 0.3);
+            border-radius: 15px;
+            background-color: #f5efefd2;
+            animation: fadeIn 1s ease forwards;
+            overflow: hidden;
+            position: relative;
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .top {
-            width: 100%;
-            height: 20vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            background: linear-gradient(135deg, #03545f, #0f8d96);
             text-align: center;
+            padding: 30px 20px;
+            border-radius: 10px 10px 0 0;
         }
 
-        .top-title {
-            color: #899bb4;
-            font-size: 14px;
+        .top-title h1 {
+            color: #ebe8e8;
+            font-size: 28px;
+            font-weight: 500;
+            margin-bottom: 10px;
         }
 
         .logo {
-            width: 70px;
-            height: auto;
-            margin-top: 10px;
+            width: 80px;
+            border: 4px solid #d1d1d1;
+            border-radius: 50%;
         }
 
         .bottom {
-            width: 100%;
-            height: auto;
-            background: #f6f9fc;
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-            justify-content: center;
-            padding: 2em 0;
-        }
-
-        .username,
-        .password,
-        .login-btn,
-        .signup-btn,
-        .forgot-password {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 1em;
-        }
-
-        input[type="text"],
-        input[type="password"],
-        button[type="submit"] {
-            width: 100%; /* Adjusted width */
-            max-width: 250px; /* Added max-width */
-            height: 35px;
             background: #fff;
-            border: none;
-            outline: none;
-            padding: 0 0.5em;
-            color: #899bb4;
-            box-shadow: 0 2px 4px rgb(50 50 93 / 10%);
+            padding: 30px 20px;
+            text-align: center;
         }
 
-        button[type="submit"] {
-            width: auto; /* Adjusted width */
-            max-width: 100px; /* Added max-width */
-            height: 30px;
-            background: #39A650;
-            color: #fff;
-            cursor: pointer;
-            font-size: 14px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgb(50 50 93 / 10%);
-            transition: 0.2s ease;
+        .form-group {
+            position: relative;
+            margin-bottom: 20px;
         }
 
-        button[type="submit"]:hover {
-            background: #DD1533;
-        }
-
-        footer {
+        .form-group input {
             width: 100%;
-            height: 10vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
+            height: 45px;
+            background: #333;
+            border: none;
+            padding: 0 15px 0 45px;
+            color: #fff;
+            border-radius: 5px;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
         }
 
-        /* Center the title */
-        .top-title h1 {
-            text-align: center;
+        .form-group input::placeholder {
+            color: #bbb;
         }
 
-        /* Responsive adjustments */
+        .form-group input:focus {
+            background: #444;
+            outline: none;
+        }
+
+        .form-group .fa {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #bbb;
+        }
+
+        .login-btn button {
+            width: 100%;
+            height: 45px;
+            background: linear-gradient(135deg, #036e81, #027234);
+            border: none;
+            color: #fff;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .login-btn button:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 200%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.5s;
+            z-index: -1;
+        }
+
+        .login-btn button:hover:before {
+            left: 0;
+        }
+
+        .login-btn button:hover {
+            background: linear-gradient(135deg, #015a29, #058096);
+            box-shadow: 0 0 10px rgba(5, 137, 146, 0.5);
+        }
+
+        .signup-btn, .forgot-password {
+            margin-top: 15px;
+        }
+
+        .signup-btn a, .forgot-password a {
+            color: black;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .signup-btn a:hover, .forgot-password a:hover {
+            color: #0c9b94;
+        }
+
+        .alert {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+        }
+
+        /* Enhancements for responsiveness */
         @media (max-width: 576px) {
-            .form-box {
+            .container {
                 width: 90%;
+                padding: 15px;
             }
-            input[type="text"],
-            input[type="password"],
-            button[type="submit"] {
-                max-width: 200px;
+
+            .top, .bottom {
+                padding: 20px 15px;
             }
-            button[type="submit"] {
-                max-width: 80px;
+
+            .top-title h1 {
+                font-size: 24px;
+            }
+
+            .form-group input {
+                height: 40px;
+                font-size: 14px;
+            }
+
+            .login-btn button {
+                height: 40px;
+                font-size: 14px;
             }
         }
     </style>
 </head>
 <body>
-    <section class="container">
-        <div class="form-box">
-            <div class="top">
-                <div class="top-title">
-                    <h1 style="color: #39A650;"><b>Login</b></h1>
-                    <!-- Logo Placeholder -->
-                    <img src="logo.png" alt="Logo" class="logo">
-                </div>
-            </div>
-            <div class="bottom">
-                <form id="login-form">
-                    <div class="username">
-                        <div class="username-icon">
-                            <i class="fa fa-user" aria-hidden="true"></i>
-                        </div>
-                        <input type="text" id="username" placeholder="Username">
-                    </div>
-                    <div class="password">
-                        <div class="password-icon">
-                            <i class="fa fa-lock" aria-hidden="true"></i>
-                        </div>
-                        <input type="password" id="password" placeholder="Password">
-                    </div>
-                    <div class="login-btn">
-                        <button type="submit">Login</button>
-                    </div>
-                </form>
-                <div class="signup-btn">
-                    <a href="signup.html">Sign Up</a>
-                </div>
-                <div class="forgot-password">
-                    <a href="forgotpass.html">Forgot Password?</a>
-                </div>
+    <div class="container">
+        <div class="top">
+            <div class="top-title">
+                <h1>Login</h1>
+                <img src="logo.png" alt="Logo" class="logo">
             </div>
         </div>
-    </section>
-    <footer>
-        
-    </footer>
+        <main class="bottom">
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="username" class="sr-only">Username</label>
+                    <input type="text" id="username" placeholder="Username" aria-label="Username" required>
+                    <i class="fa fa-user"></i>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="sr-only">Password</label>
+                    <input type="password" id="password" placeholder="Password" aria-label="Password" required>
+                    <i class="fa fa-lock"></i>
+                </div>
+                <div class="login-btn">
+                    <button type="submit">Login</button>
+                </div>
+            </form>
+            <div class="signup-btn">
+                <a href="signup.html">Sign Up</a>
+            </div>
+            <div class="forgot-password">
+                <a href="forgotpass.html">Forgot Password?</a>
+            </div>
+        </main>
+    </div>
 
-    <!-- Bootstrap Alert -->
     <div class="alert alert-danger alert-dismissible fade show" id="error-alert" style="display: none;" role="alert">
         Please fill in all the fields.
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -195,28 +221,24 @@
         </button>
     </div>
 
-    <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script>
-        // Function to validate form fields
         function validateForm() {
             var username = document.getElementById("username").value;
             var password = document.getElementById("password").value;
-
             if (username === "" || password === "") {
                 document.getElementById("error-alert").style.display = "block";
-                return false; // Prevent form submission
+                return false;
             }
-            return true; // Allow form submission
+            return true;
         }
 
-        // Add event listener for form submission
         document.getElementById("login-form").addEventListener("submit", function(event) {
             if (!validateForm()) {
-                event.preventDefault(); // Prevent form submission if fields are empty
+                event.preventDefault();
             }
         });
     </script>
